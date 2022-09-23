@@ -4,7 +4,7 @@ import path from 'path';
 
 const config: UserConfig = {
 	plugins: [sveltekit()],
-		server: {
+	server: {
 		fs: {
 			strict: false
 		}
@@ -17,17 +17,16 @@ const config: UserConfig = {
 	optimizeDeps: {
 		// force these to be pre-bundled
 		// '@douganderson444/ardag', 'ardb',
-		include: [ '@douganderson444/ipld-car-txs', '@ipld/car', '@stablelib/base64']
+		include: ['@douganderson444/ipld-car-txs', '@ipld/car', '@stablelib/base64']
 	},
 	build: {
 		commonjsOptions: {
 			include: [/node_modules/]
-		},
+		}
 	},
 	ssr: {
-		noExternal: true
+		noExternal: ['arweave']
 	}
-
 };
 
 export default config;

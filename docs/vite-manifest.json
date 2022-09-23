@@ -1,0 +1,137 @@
+{
+  "node_modules/@sveltejs/kit/src/runtime/client/start.js": {
+    "file": "_app/immutable/start-70b68404.js",
+    "src": "node_modules/@sveltejs/kit/src/runtime/client/start.js",
+    "isEntry": true,
+    "imports": [
+      "_preload-helper-aa6bc0ce.js",
+      "_index-40d14adf.js",
+      "_singletons-06864101.js"
+    ],
+    "dynamicImports": [
+      ".svelte-kit/generated/nodes/0.js",
+      ".svelte-kit/generated/nodes/1.js",
+      ".svelte-kit/generated/nodes/2.js"
+    ]
+  },
+  "src/routes/+layout.svelte": {
+    "file": "_app/immutable/components/pages/_layout.svelte-334ca9ae.js",
+    "src": "src/routes/+layout.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index-40d14adf.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_layout-ccccf84c.css"
+    ]
+  },
+  "node_modules/@sveltejs/kit/src/runtime/components/error.svelte": {
+    "file": "_app/immutable/components/error.svelte-be359b2a.js",
+    "src": "node_modules/@sveltejs/kit/src/runtime/components/error.svelte",
+    "isEntry": true,
+    "imports": [
+      "_index-40d14adf.js",
+      "_singletons-06864101.js"
+    ]
+  },
+  "src/routes/+page.svelte": {
+    "file": "_app/immutable/components/pages/_page.svelte-f9c4dfc3.js",
+    "src": "src/routes/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_preload-helper-aa6bc0ce.js",
+      "_index-40d14adf.js"
+    ],
+    "dynamicImports": [
+      "_index-4f95dd81.js",
+      "../ardag/index.js",
+      "node_modules/@douganderson444/ipld-car-txs/index.js",
+      "src/lib/utils.ts"
+    ],
+    "css": [
+      "_app/immutable/assets/_page-e1bedd54.css"
+    ]
+  },
+  "_singletons-06864101.js": {
+    "file": "_app/immutable/chunks/singletons-06864101.js",
+    "imports": [
+      "_index-40d14adf.js"
+    ]
+  },
+  "_preload-helper-aa6bc0ce.js": {
+    "file": "_app/immutable/chunks/preload-helper-aa6bc0ce.js"
+  },
+  "_index-40d14adf.js": {
+    "file": "_app/immutable/chunks/index-40d14adf.js"
+  },
+  ".svelte-kit/generated/nodes/0.js": {
+    "file": "_app/immutable/chunks/0-eeebd710.js",
+    "src": ".svelte-kit/generated/nodes/0.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/routes/+layout.svelte"
+    ]
+  },
+  ".svelte-kit/generated/nodes/1.js": {
+    "file": "_app/immutable/chunks/1-2de26e12.js",
+    "src": ".svelte-kit/generated/nodes/1.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/@sveltejs/kit/src/runtime/components/error.svelte"
+    ]
+  },
+  ".svelte-kit/generated/nodes/2.js": {
+    "file": "_app/immutable/chunks/2-dd7cf1e5.js",
+    "src": ".svelte-kit/generated/nodes/2.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "src/routes/+page.svelte"
+    ]
+  },
+  "src/lib/utils.ts": {
+    "file": "_app/immutable/chunks/utils-65c92b3f.js",
+    "src": "src/lib/utils.ts",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-e6c15f70.js",
+      "_index-4f95dd81.js"
+    ]
+  },
+  "_index-e6c15f70.js": {
+    "file": "_app/immutable/chunks/index-e6c15f70.js",
+    "imports": [
+      "__commonjsHelpers-e864563f.js"
+    ]
+  },
+  "_index-4f95dd81.js": {
+    "file": "_app/immutable/chunks/index-4f95dd81.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "__commonjsHelpers-e864563f.js"
+    ]
+  },
+  "__commonjsHelpers-e864563f.js": {
+    "file": "_app/immutable/chunks/_commonjsHelpers-e864563f.js"
+  },
+  "../ardag/index.js": {
+    "file": "_app/immutable/chunks/index-4044e6f5.js",
+    "src": "../ardag/index.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-e6c15f70.js"
+    ]
+  },
+  "node_modules/@douganderson444/ipld-car-txs/index.js": {
+    "file": "_app/immutable/chunks/index-4e7a75b5.js",
+    "src": "node_modules/@douganderson444/ipld-car-txs/index.js",
+    "isDynamicEntry": true
+  },
+  "src/routes/+layout.css": {
+    "file": "_app/immutable/assets/_layout-ccccf84c.css",
+    "src": "src/routes/+layout.css"
+  },
+  "src/routes/+page.css": {
+    "file": "_app/immutable/assets/_page-e1bedd54.css",
+    "src": "src/routes/+page.css"
+  }
+}
