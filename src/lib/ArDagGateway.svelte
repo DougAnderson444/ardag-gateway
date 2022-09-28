@@ -1,66 +1,59 @@
 <script>
 	// @ts-nocheck
-
-	import { onMount } from 'svelte';
 	import { Gateway } from '@douganderson444/svelte-component-gateway';
 
-	export let owner; // only required prop
-
-	export let dag = null;
-	export let arweave = null; // if none, will assume mainnet
-	export let ardag = null; // if none, will create from mainnet
+	export let owner;
+	export let tag;
+	export let ardag;
+	export let dag;
 
 	let esModule;
+	let props;
+	let tagNode;
+	let data;
 
-	let props = {
-		profile: {
-			firstName: 'Dougals',
-			lastName: 'Anderson'
-		}
-	};
+	$: if (ardag && owner && tag) tagSelected();
 
-	onMount(async () => {
-		if (!ardag) {
-			const { Arweave } = await import('arweave');
-			console.log('Arweave', Arweave);
-
-			arweave = arweave || Arweave.init({});
-			const { initializeArDag } = await import('@douganderson444/ardag');
-
-			ardag = initializeArDag({ arweave });
+	async function tagSelected() {
+		console.log('Selecting tag', owner, tag);
+		try {
+			const rootCID = await ardag.load({ dagOwner: owner, dag });
+			tagNode = (await dag.get(rootCID, { path: `${tag}/obj/` })).value;
+		} catch (error) {
+			throw new Error(error);
 		}
 
-		if (!dag && !globalThis.dag) {
-			const { createDagRepo } = await import('@douganderson444/ipld-car-txs');
-			dag = await createDagRepo(); // make a barebones dag repo for fast loading
-			globalThis.dag = dag;
-		} else {
-			dag = globalThis.dag;
+		try {
+			props = await getDataProps(tagNode);
+			esModule = await getEsModule(tagNode);
+		} catch (error) {
+			// if fail, it's possible one owner is using another owner's DAAp, which is not present in their dag, so fetch it
+			if (!tagNode.dappowner)
+				throw new Error('No DApp or DApp owner found. Do not know where to fetch DApp from.');
+			const rootCID = await ardag.load({ dagOwner: tagNode.dappowner, dag });
+			props = await getDataProps(tagNode);
+			esModule = await getEsModule(tagNode);
 		}
-
-		getData({ tag: 'Profile', props: 'compiled' });
-	});
-
-	/**
-	 * getData Needs owner, ardag, and dag (dag makes it 10X easier)
-	 */
-	async function getData({ tag, props }) {
-		const rootCID = await ardag.load({ dagOwner: owner, dag });
-		const path = `${tag}/obj/${props}/value`;
-		esModule = (await dag.get(rootCID, { path })).value;
-
-		console.log({ esModule });
 	}
 
-	function handleChange(event) {
-		console.log(`The data is now: `, event.detail);
+	async function getEsModule(tagNode) {
+		return (await dag.get(tagNode.compiled)).value.value;
+	}
+
+	async function getDataProps(tagNode) {
+		if (!tagNode?.data) return {};
+		return (await dag.get(tagNode.data)).value.value;
 	}
 </script>
 
-{#if !owner}
-	<div class="text-lg font-semibold">Please specify whose ArDag you wish to lookup.</div>
-{:else if esModule}
-	<div class="flex-1 w-full my-0 mx-auto box-border justify-start">
-		<Gateway {esModule} {props} on:change={handleChange} />
+{#if tagNode}
+	<slot {tagNode} {data} />
+{/if}
+
+{#if esModule || (props && esModule)}
+	<div class="flex-1 flex flex-col">
+		<div class="flex-1 w-full my-0 mx-auto box-border justify-start">
+			<Gateway {esModule} {props} on:change on:change={(e) => (data = e.detail)} />
+		</div>
 	</div>
 {/if}

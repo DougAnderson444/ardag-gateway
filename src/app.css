@@ -4,6 +4,6 @@
 
 @layer base {
 	div {
-		@apply h-full;
+		/* @apply h-full; */
 	}
 }
