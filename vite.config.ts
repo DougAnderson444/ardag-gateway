@@ -17,7 +17,8 @@ const config: UserConfig = {
 	optimizeDeps: {
 		// force these to be pre-bundled
 		// '@douganderson444/ardag', 'ardb',
-		include: ['@douganderson444/ipld-car-txs', '@ipld/car', '@stablelib/base64']
+		// '@ipld/car', '@stablelib/base64',
+		include: ['@douganderson444/ipld-car-txs', 'immortal-db']
 	},
 	build: {
 		commonjsOptions: {
