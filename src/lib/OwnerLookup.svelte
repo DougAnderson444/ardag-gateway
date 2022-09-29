@@ -14,6 +14,7 @@
 		console.log('rootNode', rootNode, { owner });
 		if (!rootNode) return;
 		ownerTags = Object.keys(rootNode);
+		looking = false;
 	}
 
 	function handleLookup(e) {
