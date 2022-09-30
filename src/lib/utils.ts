@@ -1,5 +1,4 @@
 import { initializeArDag } from '@douganderson444/ardag';
-import Arweave from 'arweave';
 
 let arweave;
 
@@ -27,6 +26,11 @@ export async function mine() {
 const defaultLogger = { log: (s) => true };
 
 export async function setupDev(opts = {}) {
+	let Arweave = await import('./modules/arweave.js');
+	console.log('Arweave', Arweave, Arweave?.init);
+	if (Arweave?.default) Arweave = Arweave.default; // workaround hack for esm vs cjs
+	if (Arweave?.default) Arweave = Arweave.default; // what is with the double .defaults? Is it an esbuild thing?
+
 	let post;
 	let serverUrl: string = 'http://localhost:1984';
 
