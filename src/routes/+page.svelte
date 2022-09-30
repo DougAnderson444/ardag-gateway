@@ -14,7 +14,7 @@
 
 		if (!dag && !globalThis.dag) {
 			const { createDagRepo } = await import('@douganderson444/ipld-car-txs');
-			dag = await createDagRepo(); // make a barebones dag repo for fast loading
+			dag = await createDagRepo({ persist: true });
 			globalThis.dag = dag;
 		} else {
 			dag = globalThis.dag;
@@ -36,7 +36,7 @@
 
 <main class="flex flex-col w-full h-screen my-0 mx-auto box-border justify-start">
 	<div class="flex flex-col p-2 h-full">
-		<h1 class="text-lg font-semibold">Welcome to the ArDag Gateway</h1>
+		<h1 class="text-xl font-semibold">Welcome to the ArDag Gateway</h1>
 		<p>
 			Loads Arweave RSA Public Key owner's es modules from ArDag, mounts them to the DOM. Saves any
 			data back to wallet owner's ArDag.
@@ -48,7 +48,15 @@
 				`tag` is the DApp name
 				`data` is any data that the user enters into the DApp, so they can Save it themselves to their own Dag
 			 -->
-				<ArDagGateway {ardag} {dag} {owner} {tag} let:tagNode let:data>
+				<ArDagGateway
+					{ardag}
+					{dag}
+					{owner}
+					{tag}
+					let:tagNode
+					let:data
+					on:change={(e) => console.log(e.detail)}
+				>
 					<Saver wallet={wallet.jwk} {tag} {ardag} {dag} {tagNode} {data} />
 				</ArDagGateway>
 			{/if}
