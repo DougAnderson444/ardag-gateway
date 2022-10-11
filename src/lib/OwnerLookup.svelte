@@ -51,6 +51,7 @@
 						? 'bg-green-200'
 						: 'bg-slate-100'}"
 					on:click={(e) => (selectedTag = tag)}
+					on:keypress={(e) => (selectedTag = tag)}
 				>
 					{tag}
 				</h2>
