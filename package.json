@@ -1,6 +1,6 @@
 {
 	"name": "@douganderson444/ardag-gateway",
-	"version": "0.0.15",
+	"version": "0.0.16",
 	"main": "index.js",
 	"module": "index.js",
 	"scripts": {
@@ -36,9 +36,9 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@douganderson444/ardag": "^0.0.13",
-		"@douganderson444/ipld-car-txs": "^0.0.12",
+		"@douganderson444/ardag": "^0.0.20",
+		"@douganderson444/ipld-car-txs": "^0.0.22",
 		"@douganderson444/svelte-component-gateway": "^0.0.19",
-		"@peerpiper/web3-wallet-connector": "^0.1.4"
+		"@peerpiper/web3-wallet-connector": "^0.1.6"
 	}
 }
